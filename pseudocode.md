@@ -22,5 +22,9 @@
         - ELSE IF player choice is paper and computer choice is scissors, print a 'you lose' string
         - ELSE IF player choice is scissors and computer choice is rock, print a 'you lose' string
         - ELSE IF player choice is scissors and computer choice is paper, print a 'you win' string
-    
+        - FOR all of the losing rounds, add 1 to the computer score
+        - FOR all of the winning rounds, add 1 to the player score
+- Create a play game function and move the round function and score variables into it
+- Create a function with a for loop that runs the round function until 5 rounds
+
     

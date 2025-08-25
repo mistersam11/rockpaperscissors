@@ -47,13 +47,25 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-console.log('Player choice: ' + humanSelection);
-console.log('Computer choice: ' + computerSelection);
 
-playRound(humanSelection, computerSelection);
+function playGame() {
+        
+    for (let i = 0; i <= 4; ++i) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
-console.log('Player score: ' + playerScore);
-console.log('Computer score: ' + computerScore);
+
+        console.log('Player choice: ' + humanSelection);
+        console.log('Computer choice: ' + computerSelection);
+
+        playRound(humanSelection, computerSelection)
+
+        console.log('Player score: ' + playerScore);
+        console.log('Computer score: ' + computerScore);
+        // Last one to separate rounds in log
+        console.log('');
+    }
+}
+
+playGame();
