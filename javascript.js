@@ -55,7 +55,6 @@ function playGame() {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
-
         console.log('Player choice: ' + humanSelection);
         console.log('Computer choice: ' + computerSelection);
 
