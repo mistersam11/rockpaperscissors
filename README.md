@@ -9,5 +9,7 @@ I created a game function and put the necessary function calls and variable assi
 # Challenges
 The biggest challenge for me was honestly the syntax, which wasn't so bad because it is easy to use stack overflow and MDN to find info. I got to use the developer tools to debug as well, which was often debugging syntax errors.
 
-# Hello future Sam if you ever read this
+# Github Pages
+Find the live preview right here!
+https://mistersam11.github.io/rockpaperscissors/
 
