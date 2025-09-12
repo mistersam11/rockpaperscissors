@@ -22,49 +22,77 @@ let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        console.log('Tie. On to the next round.')
+        dialogue.textContent = 'Tie. On to the next round.'
     } else if (humanChoice === 'rock' && computerChoice === 'paper') {
-        console.log('You lose! Paper beats rock!');
+        dialogue.textContent = 'You lose! Paper beats rock!'
         ++computerScore;
     } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-        console.log('You lose! Scissors beats paper!');
+        dialogue.textContent = 'You lose! Scissors beats paper!'
         ++computerScore;
     } else if (humanChoice === 'scissors' && computerChoice === 'rock') {
-        console.log('You lose! Rock beats scissors!');
+        dialogue.textContent = 'You lose! Rock beats scissors!'
         ++computerScore;
     } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-        console.log('You win! Rock beats scissors');
+        dialogue.textContent = 'You win! Scissors beats rock!'
         ++playerScore;
     } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-        console.log('You win! Paper beats rock!')
+        dialogue.textContent = 'You win! Rock beats paper!'
         ++playerScore;
     } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-        console.log('You win! Scissors beats paper');
+        dialogue.textContent = 'You win! Paper beats scissors!'
         ++playerScore;
     } else {
-        console.log('You put something strange...');
+        dialogue.textContent = 'Not sure what happened there...';
+        console.log('Bad selection during playRound');
         return;
     }
+    player.textContent = `Player\r\n${playerScore}`;
+    computer.textContent = `Computer\r\n${computerScore}`;
+
+    gameOver(playerScore, computerScore);
 }
 
+const choices = document.querySelector('#choices');
+choices.addEventListener('click', (e) => {
+    const target = e.target;
 
+    switch(target.id) {
+        case 'rock':
+            playRound('rock', getComputerChoice());
+            break;
+        case 'paper':
+            playRound('paper', getComputerChoice());
+            break;
+        case 'scissors':
+            playRound('scissors', getComputerChoice());
+            break;
+        default:
+            console.log('Selection was unexpected...');
+            break;
+    }
+});
 
-function playGame() {
-        
-    for (let i = 0; i <= 4; ++i) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
+const player = document.querySelector('#player');
+const computer = document.querySelector('#computer');
+player.setAttribute('style', 'white-space: pre;')
+computer.setAttribute('style', 'white-space: pre;')
 
-        console.log('Player choice: ' + humanSelection);
-        console.log('Computer choice: ' + computerSelection);
+const results = document.querySelector('#results');
 
-        playRound(humanSelection, computerSelection)
+const dialogue = document.createElement('p');
+dialogue.setAttribute('style', 'color: black; font-size: 16px;');
+results.appendChild(dialogue);
 
-        console.log('Player score: ' + playerScore);
-        console.log('Computer score: ' + computerScore);
-        // Last one to separate rounds in log
-        console.log('');
+function gameOver(playerScore, computerScore) {
+    if (playerScore < 5 && computerScore < 5) {
+        return;
+    } else if (playerScore < computerScore) {
+        dialogue.textContent = 'YOU LOSE!'
+        choices.remove();
+    } else if (playerScore === computerScore) {
+        dialogue.textContent = "Are you really going to keep playing even though it's over?"
+    } else {
+        dialogue.textContent = 'YOU WIN!'
+        choices.remove();
     }
 }
-
-playGame();
